@@ -1,0 +1,12 @@
+# ignore all files (for binaries without extensions)
+*
+
+# unignore all files with extensions
+!*.*
+
+# unignore all dirs
+!*/
+
+# ignore files and folders
+.DS_Store
+bmi.dSYM/
