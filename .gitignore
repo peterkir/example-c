@@ -10,3 +10,7 @@
 # ignore files and folders
 .DS_Store
 bmi.dSYM/
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake

@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../eval/cmake-3.28.0-rc4"
 		}
 	],
 	"settings": {},
