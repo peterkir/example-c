@@ -23,4 +23,4 @@ jobs:
           prerelease: false
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: changelog.md
+          body_path: changelog.md
