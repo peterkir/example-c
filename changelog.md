@@ -1,5 +1,5 @@
 # ChangeLog
 
-## v0.1.0
+## v0.1.x
 
-setup release process
+* setup release process
