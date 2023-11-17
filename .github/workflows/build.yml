@@ -88,11 +88,11 @@ jobs:
 
     - name: win-sha256
       if: runner.os == 'Windows'
-      run: Get-FileHash build/bmi.exe > build/bmi.sha256
+      run: Get-FileHash build/Release/bmi.exe > build/Release/bmi.exe.sha256
       shell: pwsh
     - name: sha256-linux
       if: runner.os == 'Linux'
-      run: sha256sum > build/Release/bmi.exe > build/Release/build/Release//bmi.exe.sha256
+      run: sha256sum > build/bmi* > build/Release/build/bmi.sha256
     - name: sha256-macOS
       if: runner.os == 'macOS'
       run: shasum -a 256 > build/bmi* > build/bmi.sha256
