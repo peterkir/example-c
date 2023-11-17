@@ -97,25 +97,15 @@ jobs:
       if: runner.os == 'macOS'
       run: shasum -a 256 > build/bmi* > build/bmi.sha256
 
-    - name: Zip Release
-      uses: TheDoctor0/zip-release@0.7.6
-      with:
-        # Filename for archive
-        filename:  bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
-        # Base path for archive files
-        path: ${{ github.workspace }}/build
-        # Working directory before zipping
-        directory: ${{ github.workspace }}/build
-        # List of excluded files / directories
-        exclusions: ${{ github.workspace }}/build/CMakeFiles
-        # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
-        #recursive_exclusions: # optional, default is 
+    - name: Zip release folder
+      run: |
+        zip -r bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip ./build -x "CMakeFiles/*"
           
-#    - uses: actions/upload-artifact@v3
-#      with:
-#        name: bmi ${{ matrix.os }}_${{ matrix.c_compiler }}
-#        path: ${{ github.workspace }}/build/bmi*
-#        if-no-files-found: error
+    - uses: actions/upload-artifact@v3
+      with:
+        name: bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
+        path: ${{ github.workspace }}/bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
+        if-no-files-found: error
 
   release:
     name: "Prelease"
