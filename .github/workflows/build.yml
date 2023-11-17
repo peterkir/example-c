@@ -107,7 +107,7 @@ jobs:
         # Working directory before zipping
         directory: ${{ github.workspace }}/build
         # List of excluded files / directories
-        exclusions: CMakeFiles/
+        exclusions: ${{ github.workspace }}/build/CMakeFiles
         # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
         #recursive_exclusions: # optional, default is 
           
@@ -135,4 +135,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            bmi*
+            *.zip
