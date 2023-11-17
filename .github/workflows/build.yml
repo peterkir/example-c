@@ -92,7 +92,7 @@ jobs:
       shell: pwsh
     - name: sha256-linux
       if: runner.os == 'Linux'
-      run: sha256sum > build/bmi* > build/Release/build/bmi.sha256
+      run: sha256sum > build/bmi* > build/bmi.sha256
     - name: sha256-macOS
       if: runner.os == 'macOS'
       run: shasum -a 256 > build/bmi* > build/bmi.sha256
