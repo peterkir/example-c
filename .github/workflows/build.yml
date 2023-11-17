@@ -85,12 +85,30 @@ jobs:
 #      shell: bash
 #      run: |
 #        ls -laR ${{ github.workspace }}
-    
-    - uses: actions/upload-artifact@v3
+
+    - name: Zip Release
+      uses: TheDoctor0/zip-release@0.7.6
       with:
-        name: bmi ${{ matrix.os }}_${{ matrix.c_compiler }}
-        path: ${{ github.workspace }}/build/bmi*
-        if-no-files-found: error
+        # Filename for archive
+        filename:  bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
+        # Base path for archive files
+        path: ${{ github.workspace }}/build
+        # Working directory before zipping
+        directory: ${{ github.workspace }}/build
+        # List of excluded files / directories
+        # exclusions: # optional, default is 
+        # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
+        #recursive_exclusions: # optional, default is 
+        # Tool to use for archiving
+        #type: # optional, default is zip
+        # An extra command that will run before zipping
+        command: sha256 ${{ github.workspace }}/build/bmi* > ${{ github.workspace }}/build/bmi_sha256.txt
+          
+#    - uses: actions/upload-artifact@v3
+#      with:
+#        name: bmi ${{ matrix.os }}_${{ matrix.c_compiler }}
+#        path: ${{ github.workspace }}/build/bmi*
+#        if-no-files-found: error
 
   release:
     name: "Prelease"
