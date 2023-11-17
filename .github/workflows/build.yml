@@ -88,7 +88,7 @@ jobs:
 
     - name: win-sha256
       if: runner.os == 'Windows'
-      run: Get-FileHash build/Release/bmi.exe > build/Release/bmi.exe.sha256
+      run: cd build/Release/; Get-FileHash bmi.exe > bmi.exe.sha256
       shell: pwsh
     - name: sha256-linux
       if: runner.os == 'Linux'
