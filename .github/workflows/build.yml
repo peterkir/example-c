@@ -81,10 +81,10 @@ jobs:
 #      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
 #      run: ctest --build-config ${{ matrix.build_type }}
 
-#    - name: DEBUG
-#      shell: bash
-#      run: |
-#        ls -laR ${{ github.workspace }}
+    - name: DEBUG
+      shell: bash
+      run: |
+        ls -laR ${{ github.workspace }}
 
     - name: win-sha256
       if: runner.os == 'Windows'
@@ -132,4 +132,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            *.zip
+            *
