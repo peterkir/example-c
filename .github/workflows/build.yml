@@ -97,10 +97,16 @@ jobs:
       if: runner.os == 'macOS'
       run: shasum -a 256 > build/bmi* > build/bmi.sha256
 
-    - name: Zip release folder
+    - name: zip release folder
+      if: runner.os != 'Windows'
       run: |
         zip -r bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip ./build -x "CMakeFiles/*"
-          
+
+    - name: zip release folder
+      if: runner.os == 'Windows'
+      run: Compress-Archive -Path build/Release/bmi* -DestinationPath  bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
+      shell: pwsh
+
     - uses: actions/upload-artifact@v3
       with:
         name: bmi_${{ matrix.os }}_${{ matrix.c_compiler }}.zip
