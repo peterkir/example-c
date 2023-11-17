@@ -88,7 +88,7 @@ jobs:
     
     - uses: actions/upload-artifact@v3
       with:
-        name: bmi_${{ matrix.os }}_${{ matrix.c_compiler }}
+        name: bmi ${{ matrix.os }}_${{ matrix.c_compiler }}
         path: ${{ github.workspace }}/build/bmi*
         if-no-files-found: error
 
